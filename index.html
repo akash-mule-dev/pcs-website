@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Production Control System — SpadeBloom</title>
+<link rel="icon" type="image/png" href="images/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -317,7 +318,7 @@ footer{background:var(--text);padding:48px 6% 28px}
   <a class="logo" href="#"><img src="images/logo.png" alt="SpadeBloom" style="height:28px;vertical-align:middle;margin-right:8px">spade<span>bloom</span></a>
   <div class="nav-right">
     <button class="btn-ghost">Get started</button>
-    <button class="btn-primary">Login</button>
+    <a href="https://app.spadebloom.com" class="btn-primary" style="text-decoration:none">Login</a>
   </div>
 </nav>
 
@@ -753,7 +754,7 @@ function closeModal(){modal.classList.remove('active');document.body.style.overf
 // Attach to all CTA buttons
 document.querySelectorAll('.btn-lg-white,.btn-lg-outline-white,.btn-primary,.btn-ghost,.btn-lg-primary,.btn-lg-ghost').forEach(btn=>{
   const t=btn.textContent.trim().toLowerCase();
-  if(['request demo','talk to sales','get started','watch a demo','login'].includes(t)){
+  if(['request demo','talk to sales','get started','watch a demo'].includes(t)){
     btn.addEventListener('click',openModal);
   }
 });
