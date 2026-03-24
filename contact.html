@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — SpadeBloom</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{overflow-x:hidden;width:100%;scroll-behavior:smooth}
+:root{
+  --white:#ffffff;--bg:#f7f8fa;--bg2:#f0f2f5;
+  --blue:#0052cc;--blue-hover:#0065ff;--blue-light:#e6f0ff;--blue-mid:#b3d0ff;
+  --text:#172b4d;--text2:#44526e;--text3:#626f86;
+  --border:#dce0e8;--border-light:#ebecf0;
+  --prod1:#00875a;--prod1-light:#e3fcef;
+  --prod2:#6554c0;--prod2-light:#ede8ff;
+  --orange:#e05c00;--orange-light:#fff3e8;
+  --radius:8px;--radius-lg:12px;--radius-xl:16px;
+  --shadow:0 1px 3px rgba(23,43,77,0.08),0 4px 16px rgba(23,43,77,0.06);
+  --shadow-hover:0 4px 12px rgba(23,43,77,0.12),0 8px 32px rgba(23,43,77,0.08);
+}
+body{background:var(--white);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;line-height:1.6}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--border-light);padding:0 6%;display:flex;align-items:center;justify-content:space-between;height:60px;width:100%}
+.logo{font-weight:800;font-size:20px;color:var(--text);letter-spacing:-0.5px;text-decoration:none}
+.logo span{color:var(--blue)}
+.nav-back{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text3);font-weight:500;text-decoration:none;padding:6px 12px;border-radius:var(--radius);transition:all 0.15s;border:1.5px solid var(--border)}
+.nav-back:hover{color:var(--blue);border-color:var(--blue);background:var(--blue-light)}
+
+/* HERO */
+.contact-hero{background:linear-gradient(135deg,#0052cc 0%,#0747a6 50%,#003d99 100%);padding:80px 6% 72px;text-align:center;position:relative;overflow:hidden}
+.contact-hero::before{content:'';position:absolute;top:-40%;left:20%;width:60%;height:160%;background:radial-gradient(ellipse,rgba(255,255,255,0.08),transparent 70%);pointer-events:none}
+.contact-hero::after{content:'';position:absolute;bottom:-20%;right:-5%;width:40%;height:80%;background:radial-gradient(ellipse,rgba(101,84,192,0.15),transparent 70%);pointer-events:none}
+
+/* GRID */
+.contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px 48px;padding:64px 6% 80px;max-width:1200px;margin:0 auto}
+.contact-card h3{font-size:20px;font-weight:800;color:var(--text);letter-spacing:-0.3px;margin-bottom:12px}
+.contact-card p{font-size:14px;color:var(--text2);line-height:1.7;margin-bottom:20px}
+.contact-card .card-btn{display:inline-block;padding:10px 20px;border:1.5px solid var(--border);border-radius:var(--radius);font-size:13px;font-weight:600;color:var(--text);text-decoration:none;background:var(--white);cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:all 0.15s;margin-top:6px}
+.contact-card .card-btn:hover{border-color:var(--blue);color:var(--blue);background:var(--blue-light)}
+
+/* FOOTER */
+footer{background:var(--text);padding:40px 6% 24px}
+.footer-bottom{text-align:center;padding-top:24px;border-top:1px solid rgba(255,255,255,0.08)}
+.footer-bottom p{font-size:12px;color:rgba(255,255,255,0.35)}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(23,43,77,0.5);backdrop-filter:blur(4px);z-index:9998;display:none;align-items:flex-start;justify-content:center;padding:24px;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.modal-overlay.active{display:flex}
+.modal-box{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-xl);width:100%;max-width:600px;padding:36px 32px;position:relative;box-shadow:0 24px 80px rgba(23,43,77,0.18);animation:modalIn 0.25s ease;margin:auto 0}
+@keyframes modalIn{from{opacity:0;transform:translateY(20px) scale(0.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+.modal-close{position:absolute;top:14px;right:14px;background:var(--bg);border:1px solid var(--border-light);color:var(--text3);width:32px;height:32px;border-radius:50%;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.15s}
+.modal-close:hover{background:var(--bg2);color:var(--text)}
+.modal-title{font-size:22px;font-weight:800;color:var(--text);letter-spacing:-0.3px;margin-bottom:4px}
+.modal-subtitle{font-size:14px;color:var(--text3);margin-bottom:28px}
+.modal-form{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.modal-field{display:flex;flex-direction:column;gap:5px}
+.modal-field.full{grid-column:span 2}
+.modal-field label{font-size:13px;font-weight:600;color:var(--text)}
+.modal-field label .req{color:var(--blue)}
+.modal-field input,.modal-field select,.modal-field textarea{background:var(--bg);border:1.5px solid var(--border);border-radius:var(--radius);padding:11px 13px;font-size:14px;color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;transition:border 0.15s;outline:none;width:100%;box-sizing:border-box}
+.modal-field input::placeholder,.modal-field textarea::placeholder{color:var(--text3)}
+.modal-field input:focus,.modal-field select:focus,.modal-field textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(0,82,204,0.1)}
+.modal-field input.error,.modal-field select.error,.modal-field textarea.error{border-color:#de350b}
+.modal-field .error-msg{font-size:11px;color:#de350b;min-height:15px}
+.modal-field select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='%23626f86'%3E%3Cpath d='M1 1l5 5 5-5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 13px center;padding-right:36px}
+.modal-field textarea{resize:vertical;min-height:90px}
+.modal-submit{grid-column:span 2;background:var(--blue);border:none;color:#fff;padding:13px;border-radius:var(--radius);font-size:15px;font-weight:700;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:all 0.2s;margin-top:2px}
+.modal-submit:hover{background:var(--blue-hover);transform:translateY(-1px);box-shadow:0 4px 16px rgba(0,82,204,0.3)}
+.modal-success{display:none;text-align:center;padding:40px 20px}
+.modal-success h3{color:var(--text);font-size:22px;font-weight:800;margin-bottom:8px}
+.modal-success p{color:var(--text3);font-size:15px}
+
+/* RESPONSIVE — Tablet */
+@media(max-width:1024px){
+  .contact-grid{grid-template-columns:repeat(2,1fr);gap:32px 36px}
+}
+
+/* RESPONSIVE — Mobile */
+@media(max-width:768px){
+  nav{padding:0 4%;height:54px}
+  .nav-back{font-size:12px;padding:5px 10px}
+  .contact-hero{padding:48px 4% 40px}
+  .contact-grid{grid-template-columns:1fr;gap:24px;padding:40px 4% 48px}
+  .contact-card .card-btn{width:100%;text-align:center;display:block}
+  footer{padding:28px 4% 20px}
+  /* Modal mobile */
+  .modal-box{padding:24px 18px;max-width:100%;border-radius:var(--radius-lg)}
+  .modal-form{grid-template-columns:1fr}
+  .modal-field.full{grid-column:span 1}
+  .modal-submit{grid-column:span 1}
+  .modal-title{font-size:18px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="pcs-product-page.html" class="logo"><img src="images/logo.png" alt="SpadeBloom" style="height:28px;vertical-align:middle;margin-right:8px">spade<span>bloom</span></a>
+  <a href="pcs-product-page.html" class="nav-back">← Back to PCS</a>
+</nav>
+
+<div class="contact-hero">
+  <h2 style="font-size:clamp(36px,4.5vw,52px);font-weight:800;color:#fff;letter-spacing:-1px;margin-top:0">Our teams are here to help</h2>
+  <p style="font-size:17px;color:rgba(255,255,255,0.6);margin-top:12px;max-width:460px;margin-left:auto;margin-right:auto;line-height:1.7">Questions, bug reports, feedback — we're here for it all.</p>
+</div>
+
+<div class="contact-grid">
+
+  <div class="contact-card">
+    <h3>Technical support</h3>
+    <p>Already using our products and experiencing technical issues?</p>
+    <button class="card-btn" onclick="openModal()">Raise a support ticket</button>
+  </div>
+
+  <div class="contact-card">
+    <h3>Pricing, billing & licensing</h3>
+    <p>Have a pricing question or need help managing your account?</p>
+    <button class="card-btn" onclick="openPricingModal()">Contact us</button>
+  </div>
+
+  <div class="contact-card">
+    <h3>App and Product Advice</h3>
+    <p>Evaluating our products and need advice before you buy?</p>
+    <button class="card-btn" onclick="openAdviceModal()">Contact us</button>
+  </div>
+
+  <div class="contact-card">
+    <h3>General inquiries</h3>
+    <p>Have a question or want to say hi?</p>
+    <button class="card-btn" onclick="openGeneralModal()">Contact us</button>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-bottom">
+    <p>© 2026 SpadeBloom. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- SUPPORT TICKET MODAL -->
+<div class="modal-overlay" id="ticketModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">&times;</button>
+    <div id="ticketFormWrap">
+      <div class="modal-title">Raise a Support Ticket</div>
+      <div class="modal-subtitle">Fill in the details below and our team will get back to you shortly.</div>
+      <form class="modal-form" id="ticketForm" novalidate>
+        <div class="modal-field">
+          <label>Full Name <span class="req">*</span></label>
+          <input type="text" id="tf-name" placeholder="John Smith" required>
+          <span class="error-msg" id="terr-name"></span>
+        </div>
+        <div class="modal-field">
+          <label>Work Email <span class="req">*</span></label>
+          <input type="email" id="tf-email" placeholder="john@company.com" required>
+          <span class="error-msg" id="terr-email"></span>
+        </div>
+        <div class="modal-field">
+          <label>Company <span class="req">*</span></label>
+          <input type="text" id="tf-company" placeholder="Your Company" required>
+          <span class="error-msg" id="terr-company"></span>
+        </div>
+        <div class="modal-field">
+          <label>Priority <span class="req">*</span></label>
+          <select id="tf-priority" required>
+            <option value="" disabled selected>Select priority...</option>
+            <option>Low — General question</option>
+            <option>Medium — Feature not working as expected</option>
+            <option>High — Major functionality broken</option>
+            <option>Critical — System down / data loss</option>
+          </select>
+          <span class="error-msg" id="terr-priority"></span>
+        </div>
+        <div class="modal-field full">
+          <label>Subject <span class="req">*</span></label>
+          <input type="text" id="tf-subject" placeholder="Brief summary of the issue" required>
+          <span class="error-msg" id="terr-subject"></span>
+        </div>
+        <div class="modal-field full">
+          <label>Description <span class="req">*</span></label>
+          <textarea id="tf-desc" placeholder="Describe the issue in detail — steps to reproduce, expected vs actual behavior..." required></textarea>
+          <span class="error-msg" id="terr-desc"></span>
+        </div>
+        <button type="submit" class="modal-submit">Submit Ticket</button>
+      </form>
+    </div>
+    <div class="modal-success" id="ticketSuccess">
+      <div style="font-size:48px;margin-bottom:16px">✅</div>
+      <h3>Ticket Submitted!</h3>
+      <p>We'll review your issue and respond within 24 hours.</p>
+    </div>
+  </div>
+</div>
+
+<!-- APP & PRODUCT ADVICE MODAL -->
+<div class="modal-overlay" id="adviceModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeAdviceModal()">&times;</button>
+    <div id="adviceFormWrap">
+      <div class="modal-title">App and Product Advice</div>
+      <div class="modal-subtitle">Tell us about your requirements and we'll help you find the right fit.</div>
+      <form class="modal-form" id="adviceForm" novalidate>
+        <div class="modal-field">
+          <label>Full Name <span class="req">*</span></label>
+          <input type="text" id="af-name" placeholder="John Smith" required>
+          <span class="error-msg" id="aerr-name"></span>
+        </div>
+        <div class="modal-field">
+          <label>Work Email <span class="req">*</span></label>
+          <input type="email" id="af-email" placeholder="john@company.com" required>
+          <span class="error-msg" id="aerr-email"></span>
+        </div>
+        <div class="modal-field">
+          <label>Company <span class="req">*</span></label>
+          <input type="text" id="af-company" placeholder="Your Company" required>
+          <span class="error-msg" id="aerr-company"></span>
+        </div>
+        <div class="modal-field">
+          <label>Industry <span class="req">*</span></label>
+          <select id="af-industry" required>
+            <option value="" disabled selected>Select industry...</option>
+            <option>Manufacturing</option>
+            <option>Automotive</option>
+            <option>Electronics</option>
+            <option>Pharmaceuticals</option>
+            <option>Food & Beverage</option>
+            <option>Other</option>
+          </select>
+          <span class="error-msg" id="aerr-industry"></span>
+        </div>
+        <div class="modal-field">
+          <label>Team Size <span class="req">*</span></label>
+          <select id="af-team" required>
+            <option value="" disabled selected>Select team size...</option>
+            <option>1–10</option>
+            <option>11–50</option>
+            <option>51–200</option>
+            <option>201–500</option>
+            <option>500+</option>
+          </select>
+          <span class="error-msg" id="aerr-team"></span>
+        </div>
+        <div class="modal-field">
+          <label>Interested In <span class="req">*</span></label>
+          <select id="af-product" required>
+            <option value="" disabled selected>Select product...</option>
+            <option>Production Control System</option>
+            <option>Full platform</option>
+            <option>Not sure — need guidance</option>
+          </select>
+          <span class="error-msg" id="aerr-product"></span>
+        </div>
+        <div class="modal-field full">
+          <label>Message <span class="req">*</span></label>
+          <textarea id="af-message" placeholder="Tell us about your production setup and what you're looking for..." required></textarea>
+          <span class="error-msg" id="aerr-message"></span>
+        </div>
+        <button type="submit" class="modal-submit">Get Advice</button>
+      </form>
+    </div>
+    <div class="modal-success" id="adviceSuccess">
+      <div style="font-size:48px;margin-bottom:16px">✅</div>
+      <h3>Request Submitted!</h3>
+      <p>Our product team will reach out to you within 24 hours.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PRICING MODAL -->
+<div class="modal-overlay" id="pricingModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closePricingModal()">&times;</button>
+    <div id="pricingFormWrap">
+      <div class="modal-title">Pricing, Billing & Licensing</div>
+      <div class="modal-subtitle">Tell us about your needs and we'll help you find the right plan.</div>
+      <form class="modal-form" id="pricingForm" novalidate>
+        <div class="modal-field">
+          <label>Full Name <span class="req">*</span></label>
+          <input type="text" id="pf-name" placeholder="John Smith" required>
+          <span class="error-msg" id="perr-name"></span>
+        </div>
+        <div class="modal-field">
+          <label>Work Email <span class="req">*</span></label>
+          <input type="email" id="pf-email" placeholder="john@company.com" required>
+          <span class="error-msg" id="perr-email"></span>
+        </div>
+        <div class="modal-field">
+          <label>Company <span class="req">*</span></label>
+          <input type="text" id="pf-company" placeholder="Your Company" required>
+          <span class="error-msg" id="perr-company"></span>
+        </div>
+        <div class="modal-field">
+          <label>Inquiry Type <span class="req">*</span></label>
+          <select id="pf-type" required>
+            <option value="" disabled selected>Select type...</option>
+            <option>Pricing information</option>
+            <option>Billing issue</option>
+            <option>Licensing question</option>
+            <option>Plan upgrade / downgrade</option>
+            <option>Invoice request</option>
+          </select>
+          <span class="error-msg" id="perr-type"></span>
+        </div>
+        <div class="modal-field">
+          <label>Team Size <span class="req">*</span></label>
+          <select id="pf-team" required>
+            <option value="" disabled selected>Select team size...</option>
+            <option>1–10</option>
+            <option>11–50</option>
+            <option>51–200</option>
+            <option>201–500</option>
+            <option>500+</option>
+          </select>
+          <span class="error-msg" id="perr-team"></span>
+        </div>
+        <div class="modal-field">
+          <label>Current Plan</label>
+          <select id="pf-plan">
+            <option value="" disabled selected>Select if applicable...</option>
+            <option>Free / Trial</option>
+            <option>Starter</option>
+            <option>Professional</option>
+            <option>Enterprise</option>
+            <option>Not a customer yet</option>
+          </select>
+        </div>
+        <div class="modal-field full">
+          <label>Message <span class="req">*</span></label>
+          <textarea id="pf-message" placeholder="Describe your pricing, billing, or licensing question..." required></textarea>
+          <span class="error-msg" id="perr-message"></span>
+        </div>
+        <button type="submit" class="modal-submit">Submit Inquiry</button>
+      </form>
+    </div>
+    <div class="modal-success" id="pricingSuccess">
+      <div style="font-size:48px;margin-bottom:16px">✅</div>
+      <h3>Inquiry Submitted!</h3>
+      <p>Our sales team will get back to you within 24 hours.</p>
+    </div>
+  </div>
+</div>
+
+<!-- GENERAL INQUIRY MODAL -->
+<div class="modal-overlay" id="generalModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeGeneralModal()">&times;</button>
+    <div id="generalFormWrap">
+      <div class="modal-title">General Inquiry</div>
+      <div class="modal-subtitle">Have a question? Drop us a message and we'll get back to you.</div>
+      <form class="modal-form" id="generalForm" novalidate>
+        <div class="modal-field">
+          <label>Full Name <span class="req">*</span></label>
+          <input type="text" id="gf-name" placeholder="John Smith" required>
+          <span class="error-msg" id="gerr-name"></span>
+        </div>
+        <div class="modal-field">
+          <label>Email <span class="req">*</span></label>
+          <input type="email" id="gf-email" placeholder="john@company.com" required>
+          <span class="error-msg" id="gerr-email"></span>
+        </div>
+        <div class="modal-field">
+          <label>Phone Number</label>
+          <input type="tel" id="gf-phone" placeholder="+91 98765 43210">
+          <span class="error-msg" id="gerr-phone"></span>
+        </div>
+        <div class="modal-field">
+          <label>Topic <span class="req">*</span></label>
+          <select id="gf-topic" required>
+            <option value="" disabled selected>Select a topic...</option>
+            <option>General question</option>
+            <option>Partnership opportunity</option>
+            <option>Career inquiry</option>
+            <option>Feedback</option>
+            <option>Other</option>
+          </select>
+          <span class="error-msg" id="gerr-topic"></span>
+        </div>
+        <div class="modal-field full">
+          <label>Message <span class="req">*</span></label>
+          <textarea id="gf-message" placeholder="Tell us what's on your mind..." required></textarea>
+          <span class="error-msg" id="gerr-message"></span>
+        </div>
+        <button type="submit" class="modal-submit">Send Message</button>
+      </form>
+    </div>
+    <div class="modal-success" id="generalSuccess">
+      <div style="font-size:48px;margin-bottom:16px">✅</div>
+      <h3>Message Sent!</h3>
+      <p>Thanks for reaching out. We'll respond within 24 hours.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+const modal=document.getElementById('ticketModal');
+const ticketForm=document.getElementById('ticketForm');
+const formWrap=document.getElementById('ticketFormWrap');
+const successEl=document.getElementById('ticketSuccess');
+
+function openModal(){modal.classList.add('active');document.body.style.overflow='hidden';document.documentElement.style.overflow='hidden';}
+function closeModal(){modal.classList.remove('active');document.body.style.overflow='';document.documentElement.style.overflow='';setTimeout(()=>{formWrap.style.display='';successEl.style.display='none';ticketForm.reset();document.querySelectorAll('.modal-field input,.modal-field select,.modal-field textarea').forEach(f=>f.classList.remove('error'));document.querySelectorAll('.error-msg').forEach(e=>e.textContent='');},300);}
+
+modal.addEventListener('click',e=>{if(e.target===modal)closeModal();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('active'))closeModal();});
+
+ticketForm.addEventListener('submit',function(e){
+  e.preventDefault();
+  let valid=true;
+  const fields=[
+    {id:'tf-name',err:'terr-name',msg:'Full name is required'},
+    {id:'tf-email',err:'terr-email',msg:'Valid work email is required',email:true},
+    {id:'tf-company',err:'terr-company',msg:'Company name is required'},
+    {id:'tf-priority',err:'terr-priority',msg:'Please select a priority level'},
+    {id:'tf-subject',err:'terr-subject',msg:'Subject is required'},
+    {id:'tf-desc',err:'terr-desc',msg:'Description is required'}
+  ];
+  fields.forEach(f=>{
+    const el=document.getElementById(f.id);
+    const errEl=document.getElementById(f.err);
+    el.classList.remove('error');errEl.textContent='';
+    let empty=!el.value.trim();
+    if(f.email&&!empty){if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value.trim()))empty=true;}
+    if(empty){el.classList.add('error');errEl.textContent=f.msg;valid=false;}
+  });
+  if(valid){formWrap.style.display='none';successEl.style.display='block';}
+});
+
+// Advice Modal
+const aModal=document.getElementById('adviceModal');
+const adviceForm=document.getElementById('adviceForm');
+const aFormWrap=document.getElementById('adviceFormWrap');
+const aSuccess=document.getElementById('adviceSuccess');
+
+function openAdviceModal(){aModal.classList.add('active');document.body.style.overflow='hidden';document.documentElement.style.overflow='hidden';}
+function closeAdviceModal(){aModal.classList.remove('active');document.body.style.overflow='';document.documentElement.style.overflow='';setTimeout(()=>{aFormWrap.style.display='';aSuccess.style.display='none';adviceForm.reset();aModal.querySelectorAll('.modal-field input,.modal-field select,.modal-field textarea').forEach(f=>f.classList.remove('error'));aModal.querySelectorAll('.error-msg').forEach(e=>e.textContent='');},300);}
+
+aModal.addEventListener('click',e=>{if(e.target===aModal)closeAdviceModal();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&aModal.classList.contains('active'))closeAdviceModal();});
+
+adviceForm.addEventListener('submit',function(e){
+  e.preventDefault();
+  let valid=true;
+  const fields=[
+    {id:'af-name',err:'aerr-name',msg:'Full name is required'},
+    {id:'af-email',err:'aerr-email',msg:'Valid work email is required',email:true},
+    {id:'af-company',err:'aerr-company',msg:'Company name is required'},
+    {id:'af-industry',err:'aerr-industry',msg:'Please select an industry'},
+    {id:'af-team',err:'aerr-team',msg:'Please select a team size'},
+    {id:'af-product',err:'aerr-product',msg:'Please select a product'},
+    {id:'af-message',err:'aerr-message',msg:'Message is required'}
+  ];
+  fields.forEach(f=>{
+    const el=document.getElementById(f.id);
+    const errEl=document.getElementById(f.err);
+    el.classList.remove('error');errEl.textContent='';
+    let empty=!el.value.trim();
+    if(f.email&&!empty){if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value.trim()))empty=true;}
+    if(empty){el.classList.add('error');errEl.textContent=f.msg;valid=false;}
+  });
+  if(valid){aFormWrap.style.display='none';aSuccess.style.display='block';}
+});
+
+// Pricing Modal
+const pModal=document.getElementById('pricingModal');
+const pricingForm=document.getElementById('pricingForm');
+const pFormWrap=document.getElementById('pricingFormWrap');
+const pSuccess=document.getElementById('pricingSuccess');
+
+function openPricingModal(){pModal.classList.add('active');document.body.style.overflow='hidden';document.documentElement.style.overflow='hidden';}
+function closePricingModal(){pModal.classList.remove('active');document.body.style.overflow='';document.documentElement.style.overflow='';setTimeout(()=>{pFormWrap.style.display='';pSuccess.style.display='none';pricingForm.reset();pModal.querySelectorAll('.modal-field input,.modal-field select,.modal-field textarea').forEach(f=>f.classList.remove('error'));pModal.querySelectorAll('.error-msg').forEach(e=>e.textContent='');},300);}
+
+pModal.addEventListener('click',e=>{if(e.target===pModal)closePricingModal();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&pModal.classList.contains('active'))closePricingModal();});
+
+pricingForm.addEventListener('submit',function(e){
+  e.preventDefault();
+  let valid=true;
+  const fields=[
+    {id:'pf-name',err:'perr-name',msg:'Full name is required'},
+    {id:'pf-email',err:'perr-email',msg:'Valid work email is required',email:true},
+    {id:'pf-company',err:'perr-company',msg:'Company name is required'},
+    {id:'pf-type',err:'perr-type',msg:'Please select an inquiry type'},
+    {id:'pf-team',err:'perr-team',msg:'Please select a team size'},
+    {id:'pf-message',err:'perr-message',msg:'Message is required'}
+  ];
+  fields.forEach(f=>{
+    const el=document.getElementById(f.id);
+    const errEl=document.getElementById(f.err);
+    el.classList.remove('error');errEl.textContent='';
+    let empty=!el.value.trim();
+    if(f.email&&!empty){if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value.trim()))empty=true;}
+    if(empty){el.classList.add('error');errEl.textContent=f.msg;valid=false;}
+  });
+  if(valid){pFormWrap.style.display='none';pSuccess.style.display='block';}
+});
+
+// General Inquiry Modal
+const gModal=document.getElementById('generalModal');
+const generalForm=document.getElementById('generalForm');
+const gFormWrap=document.getElementById('generalFormWrap');
+const gSuccess=document.getElementById('generalSuccess');
+
+function openGeneralModal(){gModal.classList.add('active');document.body.style.overflow='hidden';document.documentElement.style.overflow='hidden';}
+function closeGeneralModal(){gModal.classList.remove('active');document.body.style.overflow='';document.documentElement.style.overflow='';setTimeout(()=>{gFormWrap.style.display='';gSuccess.style.display='none';generalForm.reset();gModal.querySelectorAll('.modal-field input,.modal-field select,.modal-field textarea').forEach(f=>f.classList.remove('error'));gModal.querySelectorAll('.error-msg').forEach(e=>e.textContent='');},300);}
+
+gModal.addEventListener('click',e=>{if(e.target===gModal)closeGeneralModal();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&gModal.classList.contains('active'))closeGeneralModal();});
+
+generalForm.addEventListener('submit',function(e){
+  e.preventDefault();
+  let valid=true;
+  const fields=[
+    {id:'gf-name',err:'gerr-name',msg:'Full name is required'},
+    {id:'gf-email',err:'gerr-email',msg:'Valid email is required',email:true},
+    {id:'gf-topic',err:'gerr-topic',msg:'Please select a topic'},
+    {id:'gf-message',err:'gerr-message',msg:'Message is required'}
+  ];
+  fields.forEach(f=>{
+    const el=document.getElementById(f.id);
+    const errEl=document.getElementById(f.err);
+    el.classList.remove('error');errEl.textContent='';
+    let empty=!el.value.trim();
+    if(f.email&&!empty){if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value.trim()))empty=true;}
+    if(empty){el.classList.add('error');errEl.textContent=f.msg;valid=false;}
+  });
+  if(valid){gFormWrap.style.display='none';gSuccess.style.display='block';}
+});
+</script>
+
+</body>
+</html>
