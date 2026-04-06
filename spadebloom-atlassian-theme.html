@@ -20,7 +20,7 @@
     --shadow:0 1px 3px rgba(23,43,77,0.08),0 4px 16px rgba(23,43,77,0.06);
     --shadow-hover:0 4px 12px rgba(23,43,77,0.12),0 8px 32px rgba(23,43,77,0.08);
   }
-  body{background:var(--white);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;line-height:1.6;overflow-x:hidden;width:100%;position:relative}
+  body{background:var(--white);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;font-size:17px;line-height:1.6;overflow-x:hidden;width:100%;position:relative}
 
   /* SCROLL PROGRESS BAR */
   #progress-bar{position:fixed;top:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,var(--prod1),var(--blue),var(--prod2));z-index:9999;transition:width 0.08s linear;box-shadow:0 0 6px rgba(0,82,204,0.4)}
@@ -31,7 +31,7 @@
   .logo{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:20px;color:var(--text);letter-spacing:-0.5px}
   .logo span{color:var(--blue)}
   .nav-links{display:flex;gap:4px;list-style:none}
-  .nav-links a{color:var(--text2);text-decoration:none;font-size:14px;font-weight:500;padding:6px 12px;border-radius:var(--radius);transition:all 0.15s}
+  .nav-links a{color:var(--text2);text-decoration:none;font-size:15px;font-weight:500;padding:6px 12px;border-radius:var(--radius);transition:all 0.15s}
   .nav-links a:hover{background:var(--bg);color:var(--text)}
   .nav-ctas{display:flex;gap:8px;align-items:center}
   .btn-ghost{background:transparent;border:1.5px solid var(--border);color:var(--text2);padding:7px 16px;border-radius:var(--radius);font-size:13px;font-weight:600;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:all 0.15s}
@@ -44,11 +44,11 @@
   .hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--blue-light);border:1px solid var(--blue-mid);border-radius:100px;padding:5px 14px;font-size:12px;color:var(--blue);margin-bottom:24px;font-weight:600}
   .hero-badge-dot{width:6px;height:6px;background:var(--blue);border-radius:50%;animation:pulse 2s infinite}
   @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
-  .hero h1{font-size:clamp(36px,4.5vw,60px);line-height:1.1;letter-spacing:-1.5px;color:var(--text);max-width:min(800px,100%);margin:0 auto 20px;font-weight:800;word-break:break-word}
+  .hero h1{font-size:clamp(36px,4.5vw,60px);line-height:1.1;letter-spacing:-1.5px;color:var(--text);max-width:100%;margin:0 auto 20px;font-weight:800;word-break:break-word}
   #typewriter{color:var(--blue)}
   .cursor-blink{display:inline-block;width:3px;height:0.8em;background:var(--blue);margin-left:3px;vertical-align:middle;animation:blink 0.9s step-end infinite}
   @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
-  .hero-sub{font-size:18px;color:var(--text2);max-width:min(540px,100%);margin:0 auto 36px;font-weight:400;line-height:1.7}
+  .hero-sub{font-size:20px;color:var(--text2);max-width:50%;margin:0 auto 36px;font-weight:400;line-height:1.7}
   .hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:60px}
   .btn-lg{padding:13px 28px;border-radius:var(--radius);font-size:15px;font-weight:700;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:all 0.15s}
   .btn-lg-primary{background:var(--blue);border:none;color:#fff}
@@ -86,10 +86,10 @@
   .act-text{font-size:12px;color:var(--text2);line-height:1.5;font-weight:400}
 
   /* SECTIONS */
-  section{padding:80px 6%;overflow:visible}
-  .section-tag{display:inline-block;font-size:12px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:1px;margin-bottom:14px}
-  .section-title{font-size:clamp(26px,2.8vw,40px);line-height:1.2;letter-spacing:-0.8px;color:var(--text);margin-bottom:14px;font-weight:800}
-  .section-sub{font-size:16px;color:var(--text2);max-width:min(540px,100%);line-height:1.7;font-weight:400}
+  section{padding:60px 6%;overflow:visible}
+  .section-tag{display:inline-block;font-size:13px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:1px;margin-bottom:20px}
+  .section-title{font-size:clamp(28px,3vw,44px);line-height:1.2;letter-spacing:-0.8px;color:var(--text);margin-bottom:20px;font-weight:800}
+  .section-sub{font-size:18px;color:var(--text2);max-width:min(580px,100%);line-height:1.7;font-weight:400}
   .section-center{text-align:center}
   .section-center .section-sub{margin:0 auto}
   .bg-grey{background:var(--bg)}
@@ -103,10 +103,10 @@
   .product-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-size:22px}
   .icon-prod1{background:var(--prod1-light)}
   .icon-prod2{background:var(--prod2-light)}
-  .product-name{font-size:22px;font-weight:800;color:var(--text);margin-bottom:8px;letter-spacing:-0.3px}
-  .product-desc{font-size:14px;color:var(--text2);margin-bottom:24px;line-height:1.7}
+  .product-name{font-size:24px;font-weight:800;color:var(--text);margin-bottom:8px;letter-spacing:-0.3px}
+  .product-desc{font-size:16px;color:var(--text2);margin-bottom:24px;line-height:1.7}
   .product-features{list-style:none;margin-bottom:28px}
-  .product-features li{font-size:13px;color:var(--text2);padding:7px 0;border-bottom:1px solid var(--border-light);display:flex;align-items:center;gap:10px}
+  .product-features li{font-size:15px;color:var(--text2);padding:7px 0;border-bottom:1px solid var(--border-light);display:flex;align-items:center;gap:10px}
   .feat-check{width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:9px;font-weight:700}
   .check-prod1{background:var(--prod1-light);color:var(--prod1)}
   .check-prod2{background:var(--prod2-light);color:var(--prod2)}
@@ -123,8 +123,8 @@
   .diff-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;box-shadow:0 1px 3px rgba(23,43,77,0.05);transition:transform 0.2s,box-shadow 0.2s;z-index:0;position:relative}
   .diff-card:hover{transform:scale(1.04);box-shadow:var(--shadow);z-index:10}
   .diff-icon{width:44px;height:44px;border-radius:10px;background:var(--blue-light);display:flex;align-items:center;justify-content:center;margin-bottom:16px;font-size:20px}
-  .diff-title{font-size:15px;font-weight:700;color:var(--text);margin-bottom:8px}
-  .diff-text{font-size:13px;color:var(--text2);line-height:1.6}
+  .diff-title{font-size:17px;font-weight:700;color:var(--text);margin-bottom:8px}
+  .diff-text{font-size:15px;color:var(--text2);line-height:1.6}
 
   /* ROLES */
   .roles-tabs{display:flex;gap:6px;margin-top:40px;flex-wrap:wrap;justify-content:center;background:var(--bg);border:1px solid var(--border);border-radius:100px;padding:5px;width:fit-content;max-width:100%;margin-left:auto;margin-right:auto}
@@ -134,8 +134,8 @@
   .role-points{list-style:none}
   .role-point{display:flex;gap:14px;align-items:flex-start;padding:16px 0;border-bottom:1px solid var(--border-light)}
   .rp-icon{width:36px;height:36px;border-radius:var(--radius);background:var(--blue-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px}
-  .rp-title{font-size:14px;font-weight:700;color:var(--text);margin-bottom:3px}
-  .rp-text{font-size:13px;color:var(--text2);line-height:1.5}
+  .rp-title{font-size:16px;font-weight:700;color:var(--text);margin-bottom:3px}
+  .rp-text{font-size:15px;color:var(--text2);line-height:1.5}
   .role-visual{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;box-shadow:var(--shadow)}
   .rv-header{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:0.5px;font-weight:700;margin-bottom:16px}
   .rv-metric{display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-bottom:1px solid var(--border-light)}
@@ -150,7 +150,7 @@
   .testimonial-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;box-shadow:var(--shadow);transition:transform 0.2s,box-shadow 0.2s;z-index:0;position:relative}
   .testimonial-card:hover{transform:scale(1.03);box-shadow:var(--shadow-hover);z-index:10}
   .stars{color:#ff8b00;font-size:13px;margin-bottom:16px;letter-spacing:1px}
-  .testimonial-text{font-size:14px;color:var(--text2);line-height:1.75;margin-bottom:20px}
+  .testimonial-text{font-size:16px;color:var(--text2);line-height:1.75;margin-bottom:20px}
   .testimonial-author{display:flex;align-items:center;gap:12px}
   .author-avatar{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0}
   .author-name{font-size:13px;font-weight:700;color:var(--text)}
@@ -159,7 +159,7 @@
   /* INTEGRATIONS */
   .integration-diagram{max-width:min(580px,100%);margin:48px auto 0}
   .int-center{text-align:center;padding:22px;background:var(--blue-light);border:1.5px solid var(--blue-mid);border-radius:var(--radius-lg);margin-bottom:20px}
-  .int-center-name{font-size:18px;font-weight:800;color:var(--blue);letter-spacing:-0.3px}
+  .int-center-name{font-size:20px;font-weight:800;color:var(--blue);letter-spacing:-0.3px}
   .int-center-sub{font-size:12px;color:var(--text2);margin-top:3px;font-weight:500}
   .int-row{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
   .int-chip{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:9px 16px;font-size:12px;color:var(--text2);font-weight:600;display:flex;align-items:center;gap:7px;box-shadow:0 1px 3px rgba(23,43,77,0.06);transition:all 0.15s}
@@ -170,8 +170,8 @@
   .cta-section{background:var(--blue);text-align:center;padding:80px 6%;position:relative;overflow:hidden}
   .cta-section::before{content:'';position:absolute;top:-60%;left:-10%;width:120%;height:200%;background:radial-gradient(ellipse 60% 60% at 50% 50%,rgba(255,255,255,0.06),transparent);pointer-events:none}
   .cta-section .section-tag{color:rgba(255,255,255,0.7)}
-  .cta-section h2{color:#fff;font-size:clamp(28px,3vw,44px);letter-spacing:-1px;margin-bottom:14px}
-  .cta-section p{font-size:16px;color:rgba(255,255,255,0.75);margin-bottom:36px}
+  .cta-section h2{color:#fff;font-size:clamp(30px,3.2vw,48px);letter-spacing:-1px;margin-bottom:14px}
+  .cta-section p{font-size:18px;color:rgba(255,255,255,0.75);margin-bottom:36px}
   .cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
   .btn-lg-white{background:#fff;border:none;color:var(--blue);font-weight:700}
   .btn-lg-white:hover{background:#f0f7ff;transform:translateY(-1px);box-shadow:0 4px 16px rgba(0,0,0,0.15)}
@@ -425,7 +425,7 @@
 
 <div class="hero">
   <div class="hero-badge reveal d1"><span class="hero-badge-dot"></span> Enterprise operations platform</div>
-  <h1 class="reveal d2">One platform.<br><span id="typewriter">Total operational control.</span><span class="cursor-blink"></span></h1>
+  <h1 class="reveal d2">One platform. <span id="typewriter">Total operational control.</span><span class="cursor-blink"></span></h1>
   <p class="hero-sub reveal d3">From factory floor to HR office — manage your entire business with connected software built for modern enterprises.</p>
   <div class="hero-btns reveal d4">
     <button class="btn-lg btn-lg-primary" onclick="openDemoModal()">Start free trial</button>
@@ -469,7 +469,7 @@
 <section id="products" class="bg-grey">
   <div class="section-center reveal">
     <div class="section-tag">Our products</div>
-    <div class="section-title">Two powerful products.<br>One connected platform.</div>
+    <div class="section-title">Two powerful products. One connected platform.</div>
     <div class="section-sub">Each product is powerful on its own. Together, they give you end-to-end visibility across your entire operation.</div>
   </div>
   <div class="products-grid">
@@ -530,6 +530,7 @@
   <div class="roles-content reveal d2"><ul class="role-points" id="rolePoints"></ul><div class="role-visual" id="roleVisual"></div></div>
 </section>
 
+<!--
 <section>
   <div class="section-center reveal">
     <div class="section-tag">Customer stories</div>
@@ -554,8 +555,9 @@
     </div>
   </div>
 </section>
+-->
 
-<section class="bg-grey">
+<section class="bg-grey" style="padding-top:48px">
   <div class="section-center reveal">
     <div class="section-tag">Integrations</div>
     <div class="section-title">Connects to your existing stack</div>
@@ -578,7 +580,7 @@
 
 <div id="cta" class="cta-section">
   <div class="section-tag reveal">Get started</div>
-  <h2 class="reveal d1">Ready to take control<br>of your operations?</h2>
+  <h2 class="reveal d1">Ready to take control of your operations?</h2>
   <p class="reveal d2">Join companies already running smarter with SpadeBloom.</p>
   <div class="cta-btns reveal d3">
     <button class="btn-lg btn-lg-white" onclick="openDemoModal()">Request Demo</button>
@@ -796,13 +798,13 @@ navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
           <span class="error-msg" id="err-email"></span>
         </div>
         <div class="modal-field">
-          <label>Company <span class="req">*</span></label>
-          <input type="text" id="dm-company" placeholder="Your Company" required>
+          <label>Company</label>
+          <input type="text" id="dm-company" placeholder="Your Company">
           <span class="error-msg" id="err-company"></span>
         </div>
         <div class="modal-field">
-          <label>Team Size <span class="req">*</span></label>
-          <select id="dm-team" required>
+          <label>Team Size</label>
+          <select id="dm-team">
             <option value="" disabled selected>Select...</option>
             <option>1–10</option>
             <option>11–50</option>
@@ -901,8 +903,6 @@ demoForm.addEventListener('submit',function(e){
   const fields=[
     {id:'dm-name',err:'err-name',msg:'Full name is required'},
     {id:'dm-email',err:'err-email',msg:'Valid work email is required',email:true},
-    {id:'dm-company',err:'err-company',msg:'Company name is required'},
-    {id:'dm-team',err:'err-team',msg:'Please select a team size'},
     {id:'dm-message',err:'err-message',msg:'Message is required'}
   ];
   fields.forEach(f=>{
@@ -913,7 +913,11 @@ demoForm.addEventListener('submit',function(e){
     if(f.email&&!empty){const re=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;if(!re.test(el.value.trim())){empty=true;}}
     if(empty){el.classList.add('error');errEl.textContent=f.msg;valid=false;}
   });
-  if(valid){modalFormWrap.style.display='none';modalSuccess.style.display='block';}
+  if(valid){
+    const data={name:document.getElementById('dm-name').value.trim(),email:document.getElementById('dm-email').value.trim(),company:document.getElementById('dm-company').value.trim(),team:document.getElementById('dm-team').value,message:document.getElementById('dm-message').value.trim(),source:'SpadeBloom Theme Page'};
+    fetch('https://script.google.com/macros/s/AKfycbzArgCa_3Tw6PMoG_mEfaWXhHdM-QDLVldrmiZA2Pq3nKLtKu3J3Yi6htuWa9alTnoivg/exec',{method:'POST',body:JSON.stringify(data)}).catch(()=>{});
+    modalFormWrap.style.display='none';modalSuccess.style.display='block';
+  }
 });
 
 const docsModal=document.getElementById('docsModal');

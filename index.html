@@ -46,7 +46,7 @@ nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.96);backdrop
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
 .hero h1{font-size:clamp(36px,4.5vw,58px);line-height:1.1;letter-spacing:-1.5px;color:var(--text);max-width:100%;margin:0 auto 20px;font-weight:800;white-space:nowrap}
 .hero h1 em{font-style:normal;color:var(--blue)}
-.hero-sub{font-size:18px;color:var(--text2);max-width:560px;margin:0 auto 36px;font-weight:400;line-height:1.7}
+.hero-sub{font-size:18px;color:var(--text2);max-width:55%;margin:0 auto 36px;font-weight:400;line-height:1.7}
 .hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:0px}
 .btn-lg{padding:13px 28px;border-radius:var(--radius);font-size:15px;font-weight:700;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:all 0.2s;border:none}
 .btn-lg-primary{background:var(--blue);color:#fff}
@@ -92,6 +92,18 @@ section{padding:88px 6%}
 .prob-label.red{color:#de350b}
 .prob-label.green{color:var(--prod1)}
 .prob-text{font-size:13px;color:var(--text2);line-height:1.6}
+
+
+.scroll-section{border-top:1px solid var(--border-light);position:relative;min-height:100vh;display:flex;align-items:center}
+.scroll-content{display:grid;grid-template-columns:3fr 2fr;gap:64px;padding:72px 6%;align-items:center;width:100%}
+.scroll-img-wrap{position:relative;border-radius:var(--radius-xl);overflow:hidden;box-shadow:0 4px 20px rgba(23,43,77,0.12);background:#0a1628}
+.scroll-img{position:absolute;top:0;left:0;width:100%;display:block;opacity:0;transition:opacity 0.3s ease}
+.scroll-img:first-of-type{position:relative}
+.scroll-img.active{opacity:1;z-index:1}
+.scroll-caption{text-align:center;padding:10px;font-size:13px;font-weight:700;color:var(--text2);background:var(--bg);position:relative;z-index:2}
+.scroll-dots{display:flex;justify-content:center;gap:8px;padding:8px 0 12px;background:var(--bg);position:relative;z-index:2}
+.scroll-dot{width:8px;height:8px;border-radius:50%;background:var(--border);transition:background 0.3s}
+.scroll-dot.active{background:var(--blue)}
 
 /* FEATURE BLOCKS — Linear style split layout */
 .feature-section{padding:0}
@@ -218,6 +230,7 @@ footer{background:var(--text);padding:48px 6% 28px}
 @media(max-width:1024px){
   .feature-block{grid-template-columns:1fr;gap:32px}
   .feature-block.reverse{direction:ltr}
+  .scroll-content{grid-template-columns:1fr}
   .roles-grid{grid-template-columns:repeat(2,1fr)}
   .bento-grid{grid-template-columns:repeat(2,1fr)}
   .bento-card.span2{grid-column:span 1}
@@ -345,7 +358,7 @@ footer{background:var(--text);padding:48px 6% 28px}
 <section class="bg-grey">
   <div class="section-center">
     <div class="section-tag reveal">Why PCS</div>
-    <div class="section-title reveal d1">Built to replace chaos<br>on the factory floor</div>
+    <div class="section-title reveal d1">Built to replace chaos on the factory floor</div>
     <div class="section-sub reveal d2">Every feature exists because a real manufacturing team had a real problem. Here's what PCS solves.</div>
   </div>
   <div class="problems-grid">
@@ -367,6 +380,50 @@ footer{background:var(--text);padding:48px 6% 28px}
 
 <!-- FEATURE BLOCKS -->
 <div class="feature-section">
+
+  <div class="feature-block">
+    <div class="reveal-left">
+      <div class="feat-label purple">🔬 3D Quality Analysis</div>
+      <div class="feat-title">Enterprise-grade 3D quality inspection</div>
+      <div class="feat-desc">Upload 3D models or import CAD files for real-time inspection. Quality checks categorized as Pass, Warning, Fail, and Pending — with high-resolution Point Cloud scanning.</div>
+      <ul class="feat-points">
+        <li><span class="fp-check purple">✓</span> Upload 3D Model or Import CAD File — supports all major manufacturing formats</li><li><span class="fp-check purple">✓</span> Quality Summary donut — visual breakdown of Pass, Warning, Fail, and Pending checks</li><li><span class="fp-check purple">✓</span> Real-time inspection active — high-precision Point Cloud scanning</li><li><span class="fp-check purple">✓</span> Multiple assets: Test - 3D Model, Water Bottle, Robot Arm — manage all in one place</li>
+      </ul>
+    </div>
+    <div class="reveal-right d2">
+      <div class="screen-frame">
+      <div class="screen-glow-dark"></div>
+      <div class="screen-inner-dark">
+        <div class="screen-bar-dark"><div class="screen-dot" style="background:#ff5f57"></div><div class="screen-dot" style="background:#ffbd2e"></div><div class="screen-dot" style="background:#28c840"></div><span class="screen-title-bar" style="color:rgba(255,255,255,0.4)">3D Quality Analysis</span></div>
+        <img class="screen-img" src="images/3D.png" alt="3D Quality Analysis">
+      </div>
+    </div>
+    </div>
+  </div>
+
+  <div class="scroll-section" id="inspectionSection">
+    <div class="scroll-content">
+      <div class="scroll-sticky">
+        <div class="scroll-img-wrap">
+          <div class="screen-bar-dark" style="position:relative;z-index:3;border-radius:var(--radius-xl) var(--radius-xl) 0 0"><div class="screen-dot" style="background:#ff5f57"></div><div class="screen-dot" style="background:#ffbd2e"></div><div class="screen-dot" style="background:#28c840"></div><span class="screen-title-bar" style="color:rgba(255,255,255,0.4)">Automated Visual Inspection</span></div>
+          <img class="scroll-img active" src="images/3D_scanning_part.png" alt="3D Scanning" data-step="0">
+          <img class="scroll-img" src="images/3D_analysis_part.png" alt="3D Analysis" data-step="1">
+          <img class="scroll-img" src="images/3D_alert.png" alt="3D Alert" data-step="2">
+          <div class="scroll-caption" id="scrollCaption">Step 1 — Scanning</div>
+          <div class="scroll-dots"><span class="scroll-dot active"></span><span class="scroll-dot"></span><span class="scroll-dot"></span></div>
+        </div>
+      </div>
+      <div class="scroll-text">
+        <div class="feat-label purple">🤖 Automated Visual Inspection</div>
+        <div class="feat-title">Automated Visual Inspection System</div>
+        <div class="feat-desc">A computer vision–powered solution that verifies structural integrity in real time by comparing physical components against a predefined digital model.</div>
+        <ul class="feat-points">
+          <li><span class="fp-check purple">✓</span> Live Scanning — Captures the object using a camera feed</li><li><span class="fp-check purple">✓</span> Model Alignment — Overlays reference geometry for precise comparison</li><li><span class="fp-check purple">✓</span> Component Verification — Detects presence and position of holes, bolts, and fittings</li><li><span class="fp-check purple">✓</span> Defect Detection — Instantly flags missing or misaligned parts</li><li><span class="fp-check purple">✓</span> Real-Time Feedback — Visual indicators (✓ / ✕) for quick decision-making</li>
+        </ul>
+        <p style="font-size:13px;color:var(--prod1);font-weight:600;margin-top:12px">Outcome: Faster inspections, reduced human error, and consistent quality assurance across manufacturing workflows.</p>
+      </div>
+    </div>
+  </div>
 
   <div class="feature-block">
     <div class="reveal-left">
@@ -448,8 +505,9 @@ footer{background:var(--text);padding:48px 6% 28px}
     </div>
   </div>
 
-  <div class="feature-block">
-    <div class="reveal-left">
+<!--
+  <div class="feature-block reverse">
+    <div class="reveal-right">
       <div class="feat-label blue">⚙️ Stage Progress</div>
       <div class="feat-title">Real-time status of every manufacturing stage</div>
       <div class="feat-desc">See all active stages across your floor at once — Component Preparation, SMT Placement, Reflow Soldering, Wave Soldering, Quality Control, and more. Each card shows operator, actual vs. target time, and live status.</div>
@@ -457,7 +515,7 @@ footer{background:var(--text);padding:48px 6% 28px}
         <li><span class="fp-check blue">✓</span> Stage cards with In Progress / Pending status badges — live updates</li><li><span class="fp-check blue">✓</span> Actual vs Target time for every stage across every batch</li><li><span class="fp-check blue">✓</span> Estimated vs Actual Time bar chart — compare performance across all batches</li><li><span class="fp-check blue">✓</span> Operator assigned per stage — reassign without leaving the screen</li>
       </ul>
     </div>
-    <div class="reveal-right d2">
+    <div class="reveal-left d2">
       <div class="screen-frame">
       <div class="screen-glow-dark"></div>
       <div class="screen-inner-dark">
@@ -468,8 +526,8 @@ footer{background:var(--text);padding:48px 6% 28px}
     </div>
   </div>
 
-  <div class="feature-block reverse">
-    <div class="reveal-right">
+  <div class="feature-block">
+    <div class="reveal-left">
       <div class="feat-label purple">🗂️ Kanban Pipeline</div>
       <div class="feat-title">Visual work order pipeline — drag and drop</div>
       <div class="feat-desc">See your entire work order pipeline in a kanban view — Pending, In Progress, Completed, Skipped. Each stage card shows operator, station, and elapsed time. Perfect for supervisors managing multiple lines at once.</div>
@@ -477,7 +535,7 @@ footer{background:var(--text);padding:48px 6% 28px}
         <li><span class="fp-check purple">✓</span> Kanban columns: Pending, In Progress, Completed, Skipped — with live counts</li><li><span class="fp-check purple">✓</span> Stage cards: Packaging, Quality Control, Wave Soldering, Through-Hole Assembly, and more</li><li><span class="fp-check purple">✓</span> Operator + station + elapsed time on every card — full context at a glance</li><li><span class="fp-check purple">✓</span> Filter by Work Order — quickly locate any order by name or ID</li>
       </ul>
     </div>
-    <div class="reveal-left d2">
+    <div class="reveal-right d2">
       <div class="screen-frame">
       <div class="screen-glow-dark"></div>
       <div class="screen-inner-dark">
@@ -487,6 +545,7 @@ footer{background:var(--text);padding:48px 6% 28px}
     </div>
     </div>
   </div>
+-->
 
   <div class="feature-block">
     <div class="reveal-left">
@@ -508,6 +567,7 @@ footer{background:var(--text);padding:48px 6% 28px}
     </div>
   </div>
 
+<!--
   <div class="feature-block reverse">
     <div class="reveal-right">
       <div class="feat-label blue">⏱️ Live Time Tracking</div>
@@ -527,9 +587,10 @@ footer{background:var(--text);padding:48px 6% 28px}
     </div>
     </div>
   </div>
+-->
 
-  <div class="feature-block">
-    <div class="reveal-left">
+  <div class="feature-block reverse">
+    <div class="reveal-right">
       <div class="feat-label green">📈 Reports & Analytics</div>
       <div class="feat-title">Insights that drive smarter decisions</div>
       <div class="feat-desc">Operator performance charts, stage analytics, and a full operator metrics table — all in one screen. Filter by date range, export to CSV, and track efficiency trends across your entire team.</div>
@@ -537,7 +598,7 @@ footer{background:var(--text);padding:48px 6% 28px}
         <li><span class="fp-check green">✓</span> Operator Performance chart — efficiency percentages for every team member at a glance</li><li><span class="fp-check green">✓</span> Stage Analytics — Avg Time vs Target across Electrical, Stator, Assembly, QC, Wave, and more</li><li><span class="fp-check green">✓</span> Operator Metrics table — Stages completed, total time, and efficiency % per person</li><li><span class="fp-check green">✓</span> Date range filter + Export CSV — select any custom range for your reports</li>
       </ul>
     </div>
-    <div class="reveal-right d2">
+    <div class="reveal-left d2">
       <div class="screen-frame">
       <div class="screen-glow-dark"></div>
       <div class="screen-inner-dark">
@@ -548,25 +609,6 @@ footer{background:var(--text);padding:48px 6% 28px}
     </div>
   </div>
 
-  <div class="feature-block reverse">
-    <div class="reveal-right">
-      <div class="feat-label purple">🔬 3D Quality Analysis</div>
-      <div class="feat-title">Enterprise-grade 3D quality inspection</div>
-      <div class="feat-desc">Upload 3D models or import CAD files for real-time inspection. Quality checks categorized as Pass, Warning, Fail, and Pending — with high-resolution Point Cloud scanning.</div>
-      <ul class="feat-points">
-        <li><span class="fp-check purple">✓</span> Upload 3D Model or Import CAD File — supports all major manufacturing formats</li><li><span class="fp-check purple">✓</span> Quality Summary donut — visual breakdown of Pass, Warning, Fail, and Pending checks</li><li><span class="fp-check purple">✓</span> Real-time inspection active — high-precision Point Cloud scanning</li><li><span class="fp-check purple">✓</span> Multiple assets: Test - 3D Model, Water Bottle, Robot Arm — manage all in one place</li>
-      </ul>
-    </div>
-    <div class="reveal-left d2">
-      <div class="screen-frame">
-      <div class="screen-glow-dark"></div>
-      <div class="screen-inner-dark">
-        <div class="screen-bar-dark"><div class="screen-dot" style="background:#ff5f57"></div><div class="screen-dot" style="background:#ffbd2e"></div><div class="screen-dot" style="background:#28c840"></div><span class="screen-title-bar" style="color:rgba(255,255,255,0.4)">3D Quality Analysis</span></div>
-        <img class="screen-img" src="images/3D.jpg" alt="3D Quality Analysis">
-      </div>
-    </div>
-    </div>
-  </div>
 
 </div>
 
@@ -595,7 +637,7 @@ footer{background:var(--text);padding:48px 6% 28px}
 <section>
   <div class="section-center">
     <div class="section-tag reveal">Built for every role</div>
-    <div class="section-title reveal d1">One platform, four perspectives</div>
+    <div class="section-title reveal d1">One platform, every perspective</div>
     <div class="section-sub reveal d2">PCS adapts to each team member's needs — from the factory floor to the manager's office.</div>
   </div>
   <div class="roles-grid">
@@ -627,7 +669,7 @@ footer{background:var(--text);padding:48px 6% 28px}
 <!-- CTA -->
 <div class="cta-section">
   <div class="section-tag reveal">Get started</div>
-  <h2 class="reveal d1">Ready to take control<br>of your factory floor?</h2>
+  <h2 class="reveal d1">Ready to take control of your factory floor?</h2>
   <p class="reveal d2">Join manufacturing teams already running smarter with the Production Control System.</p>
   <div class="cta-btns reveal d3">
     <button class="btn-lg btn-lg-white">Request Demo</button>
@@ -665,13 +707,13 @@ footer{background:var(--text);padding:48px 6% 28px}
           <span class="error-msg" id="err-email"></span>
         </div>
         <div class="modal-field">
-          <label>Company <span class="req">*</span></label>
-          <input type="text" id="dm-company" placeholder="Your Company" required>
+          <label>Company</label>
+          <input type="text" id="dm-company" placeholder="Your Company">
           <span class="error-msg" id="err-company"></span>
         </div>
         <div class="modal-field">
-          <label>Team Size <span class="req">*</span></label>
-          <select id="dm-team" required>
+          <label>Team Size</label>
+          <select id="dm-team">
             <option value="" disabled selected>Select...</option>
             <option>1–10</option>
             <option>11–50</option>
@@ -705,41 +747,103 @@ let lastScrollY = window.scrollY;
 const obs = new IntersectionObserver(es => {
   es.forEach(e => {
     if (e.isIntersecting) {
-      // Animate in
       e.target.classList.add('visible');
     } else {
-      const rect = e.target.getBoundingClientRect();
-      // Element is below the viewport (not yet reached) — keep hidden/reset
-      if (rect.top > 0) {
-        e.target.classList.remove('visible');
-      }
-      // Element is above viewport (already passed) — keep visible so scrolling
-      // up doesn't show bare content; it will reset next scroll down when
-      // it re-enters from below
+      e.target.classList.remove('visible');
     }
   });
 }, { threshold: 0.05 });
 
-// Separately: when scrolling UP, reset elements that are now below viewport
-// so they animate again when scrolled down to
-window.addEventListener('scroll', () => {
-  const currentY = window.scrollY;
-  const goingUp = currentY < lastScrollY;
-  lastScrollY = currentY;
-
-  if (goingUp) {
-    document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale').forEach(el => {
-      const rect = el.getBoundingClientRect();
-      // If element is below viewport while scrolling up, reset it
-      if (rect.top > window.innerHeight) {
-        el.classList.remove('visible');
-      }
-    });
-  }
-}, { passive: true });
-
 document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale').forEach(el => obs.observe(el));
 window.addEventListener('scroll',()=>{document.querySelector('nav').style.boxShadow=window.scrollY>10?'0 1px 12px rgba(23,43,77,0.1)':'';},{passive:true});
+
+// Scroll-hijack image switcher
+(function(){
+  const section=document.getElementById('inspectionSection');
+  if(!section)return;
+  const imgs=section.querySelectorAll('.scroll-img');
+  const dots=section.querySelectorAll('.scroll-dot');
+  const caption=document.getElementById('scrollCaption');
+  const captions=['Step 1 — Scanning','Step 2 — Analysing','Step 3 — Alert'];
+  let current=0;
+  let locked=false;
+  let cooldown=false;
+  let releasedDir=0; // 0=not released, 1=released going down, -1=released going up
+  const navH=60;
+
+  function setStep(idx){
+    if(idx===current)return;
+    imgs[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current=idx;
+    imgs[current].classList.add('active');
+    dots[current].classList.add('active');
+    caption.textContent=captions[current];
+    cooldown=true;
+    setTimeout(()=>{cooldown=false;},500);
+  }
+
+  function snapAndLock(){
+    locked=true;
+    var target=section.offsetTop-navH;
+    window.scrollTo(0,target);
+  }
+
+  window.addEventListener('wheel',function(e){
+    var rect=section.getBoundingClientRect();
+    var down=e.deltaY>0;
+
+    // Not locked yet — check if we should lock
+    if(!locked){
+      // Just released — don't re-lock in same direction until section leaves viewport
+      if(releasedDir!==0){
+        if(rect.top>window.innerHeight || rect.bottom<0){releasedDir=0;}
+        // Allow re-lock from opposite direction
+        else if((down && releasedDir===-1)||(! down && releasedDir===1)){releasedDir=0;}
+        else{return;}
+      }
+      // Scrolling down: lock when section top reaches nav
+      if(down && rect.top<=navH+50 && rect.top>=-50){
+        e.preventDefault();
+        current=0;
+        imgs.forEach(i=>i.classList.remove('active'));
+        dots.forEach(d=>d.classList.remove('active'));
+        imgs[0].classList.add('active');
+        dots[0].classList.add('active');
+        caption.textContent=captions[0];
+        snapAndLock();
+        return;
+      }
+      // Scrolling up: lock when section bottom enters viewport
+      if(!down && rect.bottom>=window.innerHeight-50 && rect.bottom<=window.innerHeight+50){
+        e.preventDefault();
+        current=2;
+        imgs.forEach(i=>i.classList.remove('active'));
+        dots.forEach(d=>d.classList.remove('active'));
+        imgs[2].classList.add('active');
+        dots[2].classList.add('active');
+        caption.textContent=captions[2];
+        snapAndLock();
+        return;
+      }
+      return;
+    }
+
+    // Locked — always prevent scroll
+    e.preventDefault();
+    if(cooldown)return;
+
+    if(down&&current<imgs.length-1){
+      setStep(current+1);
+    }else if(!down&&current>0){
+      setStep(current-1);
+    }else{
+      // Done — unlock and mark released direction so it doesn't re-lock from same direction
+      locked=false;
+      releasedDir=down?1:-1;
+    }
+  },{passive:false});
+})();
 
 // Demo Modal
 const modal=document.getElementById('demoModal');
@@ -770,8 +874,6 @@ demoForm.addEventListener('submit',function(e){
   const fields=[
     {id:'dm-name',err:'err-name',msg:'Full name is required'},
     {id:'dm-email',err:'err-email',msg:'Valid work email is required',email:true},
-    {id:'dm-company',err:'err-company',msg:'Company name is required'},
-    {id:'dm-team',err:'err-team',msg:'Please select a team size'},
     {id:'dm-message',err:'err-message',msg:'Message is required'}
   ];
   fields.forEach(f=>{
@@ -782,7 +884,11 @@ demoForm.addEventListener('submit',function(e){
     if(f.email&&!empty){const re=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;if(!re.test(el.value.trim())){empty=true;}}
     if(empty){el.classList.add('error');errEl.textContent=f.msg;valid=false;}
   });
-  if(valid){modalFormWrap.style.display='none';modalSuccess.style.display='block';}
+  if(valid){
+    const data={name:document.getElementById('dm-name').value.trim(),email:document.getElementById('dm-email').value.trim(),company:document.getElementById('dm-company').value.trim(),team:document.getElementById('dm-team').value,message:document.getElementById('dm-message').value.trim(),source:'Product Page'};
+    fetch('https://script.google.com/macros/s/AKfycbzArgCa_3Tw6PMoG_mEfaWXhHdM-QDLVldrmiZA2Pq3nKLtKu3J3Yi6htuWa9alTnoivg/exec',{method:'POST',body:JSON.stringify(data)}).catch(()=>{});
+    modalFormWrap.style.display='none';modalSuccess.style.display='block';
+  }
 });
 
 </script>

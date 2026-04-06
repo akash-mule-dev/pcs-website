@@ -99,8 +99,8 @@ footer{background:var(--text);padding:40px 6% 24px}
 <body>
 
 <nav>
-  <a href="pcs-product-page.html" class="logo"><img src="images/logo.png" alt="SpadeBloom" style="height:28px;vertical-align:middle;margin-right:8px">spade<span>bloom</span></a>
-  <a href="pcs-product-page.html" class="nav-back">← Back to PCS</a>
+  <a href="index.html" class="logo"><img src="images/logo.png" alt="SpadeBloom" style="height:28px;vertical-align:middle;margin-right:8px">spade<span>bloom</span></a>
+  <a href="index.html" class="nav-back">← Back to PCS</a>
 </nav>
 
 <div class="contact-hero">
@@ -427,7 +427,11 @@ ticketForm.addEventListener('submit',function(e){
     if(f.email&&!empty){if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value.trim()))empty=true;}
     if(empty){el.classList.add('error');errEl.textContent=f.msg;valid=false;}
   });
-  if(valid){formWrap.style.display='none';successEl.style.display='block';}
+  if(valid){
+    const data={name:document.getElementById('tf-name').value.trim(),email:document.getElementById('tf-email').value.trim(),company:document.getElementById('tf-company').value.trim(),priority:document.getElementById('tf-priority').value,subject:document.getElementById('tf-subject').value.trim(),message:document.getElementById('tf-desc').value.trim(),source:'Contact - Support Ticket'};
+    fetch('https://script.google.com/macros/s/AKfycbzArgCa_3Tw6PMoG_mEfaWXhHdM-QDLVldrmiZA2Pq3nKLtKu3J3Yi6htuWa9alTnoivg/exec',{method:'POST',body:JSON.stringify(data)}).catch(()=>{});
+    formWrap.style.display='none';successEl.style.display='block';
+  }
 });
 
 // Advice Modal
@@ -462,7 +466,11 @@ adviceForm.addEventListener('submit',function(e){
     if(f.email&&!empty){if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value.trim()))empty=true;}
     if(empty){el.classList.add('error');errEl.textContent=f.msg;valid=false;}
   });
-  if(valid){aFormWrap.style.display='none';aSuccess.style.display='block';}
+  if(valid){
+    const data={name:document.getElementById('af-name').value.trim(),email:document.getElementById('af-email').value.trim(),company:document.getElementById('af-company').value.trim(),industry:document.getElementById('af-industry').value,team:document.getElementById('af-team').value,product:document.getElementById('af-product').value,message:document.getElementById('af-message').value.trim(),source:'Contact - Product Advice'};
+    fetch('https://script.google.com/macros/s/AKfycbzArgCa_3Tw6PMoG_mEfaWXhHdM-QDLVldrmiZA2Pq3nKLtKu3J3Yi6htuWa9alTnoivg/exec',{method:'POST',body:JSON.stringify(data)}).catch(()=>{});
+    aFormWrap.style.display='none';aSuccess.style.display='block';
+  }
 });
 
 // Pricing Modal
@@ -496,7 +504,11 @@ pricingForm.addEventListener('submit',function(e){
     if(f.email&&!empty){if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value.trim()))empty=true;}
     if(empty){el.classList.add('error');errEl.textContent=f.msg;valid=false;}
   });
-  if(valid){pFormWrap.style.display='none';pSuccess.style.display='block';}
+  if(valid){
+    const data={name:document.getElementById('pf-name').value.trim(),email:document.getElementById('pf-email').value.trim(),company:document.getElementById('pf-company').value.trim(),type:document.getElementById('pf-type').value,team:document.getElementById('pf-team').value,message:document.getElementById('pf-message').value.trim(),source:'Contact - Pricing/Billing'};
+    fetch('https://script.google.com/macros/s/AKfycbzArgCa_3Tw6PMoG_mEfaWXhHdM-QDLVldrmiZA2Pq3nKLtKu3J3Yi6htuWa9alTnoivg/exec',{method:'POST',body:JSON.stringify(data)}).catch(()=>{});
+    pFormWrap.style.display='none';pSuccess.style.display='block';
+  }
 });
 
 // General Inquiry Modal
@@ -528,7 +540,11 @@ generalForm.addEventListener('submit',function(e){
     if(f.email&&!empty){if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value.trim()))empty=true;}
     if(empty){el.classList.add('error');errEl.textContent=f.msg;valid=false;}
   });
-  if(valid){gFormWrap.style.display='none';gSuccess.style.display='block';}
+  if(valid){
+    const data={name:document.getElementById('gf-name').value.trim(),email:document.getElementById('gf-email').value.trim(),phone:(document.getElementById('gf-phone')?document.getElementById('gf-phone').value.trim():''),topic:document.getElementById('gf-topic').value,message:document.getElementById('gf-message').value.trim(),source:'Contact - General Inquiry'};
+    fetch('https://script.google.com/macros/s/AKfycbzArgCa_3Tw6PMoG_mEfaWXhHdM-QDLVldrmiZA2Pq3nKLtKu3J3Yi6htuWa9alTnoivg/exec',{method:'POST',body:JSON.stringify(data)}).catch(()=>{});
+    gFormWrap.style.display='none';gSuccess.style.display='block';
+  }
 });
 </script>
 
