@@ -97,7 +97,7 @@ section{padding:88px 6%}
 .scroll-section{border-top:1px solid var(--border-light);position:relative;min-height:100vh;display:flex;align-items:center}
 .scroll-content{display:grid;grid-template-columns:3fr 2fr;gap:64px;padding:72px 6%;align-items:center;width:100%}
 .scroll-img-wrap{position:relative;border-radius:var(--radius-xl);overflow:hidden;box-shadow:0 4px 20px rgba(23,43,77,0.12);background:#0a1628}
-.scroll-img{position:absolute;top:0;left:0;width:100%;display:block;opacity:0;transition:opacity 0.3s ease}
+.scroll-img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:contain;object-position:center;display:block;opacity:0;transition:opacity 0.3s ease}
 .scroll-img:first-of-type{position:relative}
 .scroll-img.active{opacity:1;z-index:1}
 .scroll-caption{text-align:center;padding:10px;font-size:13px;font-weight:700;color:var(--text2);background:var(--bg);position:relative;z-index:2}
@@ -406,11 +406,10 @@ footer{background:var(--text);padding:48px 6% 28px}
       <div class="scroll-sticky">
         <div class="scroll-img-wrap">
           <div class="screen-bar-dark" style="position:relative;z-index:3;border-radius:var(--radius-xl) var(--radius-xl) 0 0"><div class="screen-dot" style="background:#ff5f57"></div><div class="screen-dot" style="background:#ffbd2e"></div><div class="screen-dot" style="background:#28c840"></div><span class="screen-title-bar" style="color:rgba(255,255,255,0.4)">Automated Visual Inspection</span></div>
-          <img class="scroll-img active" src="images/3D_scanning_part.jpg" alt="3D Scanning" data-step="0">
-          <img class="scroll-img" src="images/3D_analysis_part.jpg" alt="3D Analysis" data-step="1">
-          <img class="scroll-img" src="images/3D_alert.jpg" alt="3D Alert" data-step="2">
-          <div class="scroll-caption" id="scrollCaption">Step 1 — Scanning</div>
-          <div class="scroll-dots"><span class="scroll-dot active"></span><span class="scroll-dot"></span><span class="scroll-dot"></span></div>
+          <img class="scroll-img active" src="images/3D_analysis_part.jpg" alt="3D Analysis" data-step="0">
+          <img class="scroll-img" src="images/3D_alert.jpg" alt="3D Alert" data-step="1">
+          <div class="scroll-caption" id="scrollCaption">Step 1 — Analysing</div>
+          <div class="scroll-dots"><span class="scroll-dot active"></span><span class="scroll-dot"></span></div>
         </div>
       </div>
       <div class="scroll-text">
@@ -764,7 +763,7 @@ window.addEventListener('scroll',()=>{document.querySelector('nav').style.boxSha
   const imgs=section.querySelectorAll('.scroll-img');
   const dots=section.querySelectorAll('.scroll-dot');
   const caption=document.getElementById('scrollCaption');
-  const captions=['Step 1 — Scanning','Step 2 — Analysing','Step 3 — Alert'];
+  const captions=['Step 1 — Analysing','Step 2 — Alert'];
   let current=0;
   let locked=false;
   let cooldown=false;
@@ -817,12 +816,12 @@ window.addEventListener('scroll',()=>{document.querySelector('nav').style.boxSha
       // Scrolling up: lock when section bottom enters viewport
       if(!down && rect.bottom>=window.innerHeight-50 && rect.bottom<=window.innerHeight+50){
         e.preventDefault();
-        current=2;
+        current=imgs.length-1;
         imgs.forEach(i=>i.classList.remove('active'));
         dots.forEach(d=>d.classList.remove('active'));
-        imgs[2].classList.add('active');
-        dots[2].classList.add('active');
-        caption.textContent=captions[2];
+        imgs[current].classList.add('active');
+        dots[current].classList.add('active');
+        caption.textContent=captions[current];
         snapAndLock();
         return;
       }
